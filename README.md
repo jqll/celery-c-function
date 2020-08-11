@@ -20,7 +20,7 @@ celery worker -A app:app -P gevent -l info --autoscale=30,10 --prefetch-multipli
 ```
 
 #### Output
-No tasks started when long_sleep is called by another thread:
+No tasks started when long_sleep is called by another thread. long_sleep is a C++ extension function that sleeps for 20 seconds. It releases the GIL before sleeping.
 ```
 [2020-08-11 01:20:12,974: INFO/MainProcess] Received task: app.test_task[84ead87a-ffc4-4aa3-8ca8-db904a3da3f5]  
 [2020-08-11 01:20:17,979: INFO/MainProcess] Task app.test_task[84ead87a-ffc4-4aa3-8ca8-db904a3da3f5] succeeded in 5.000351045979187s: None
