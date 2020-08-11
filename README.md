@@ -19,8 +19,7 @@ docker run -d -p 6379:6379 redis
 celery worker -A app:app -P gevent -l info --autoscale=30,10 --prefetch-multiplier 5
 ```
 
-#### Output
-No tasks started when long_sleep is called by another thread. long_sleep is a C++ extension function that sleeps for 20 seconds. It releases the GIL before sleeping.
+The tasks should be dispatched every 5 seconds. The log shows that no tasks are dispatched when long_sleep is called by another thread. long_sleep is a C++ extension function that sleeps for 20 seconds. It releases the GIL before sleeping.
 ```
 [2020-08-11 02:20:50,866: INFO/MainProcess] Received task: app.test_task[ac35e3d1-7540-4a7b-93f4-b36f5f8d72da]  
 [2020-08-11 02:20:55,868: INFO/MainProcess] Task app.test_task[ac35e3d1-7540-4a7b-93f4-b36f5f8d72da] succeeded in 5.000165025005117s: None
