@@ -1,4 +1,4 @@
-### `Celery -P gevent` stops during another thread calls into a long running C++ extension function, even if that function releases GIL.
+### `Celery -P gevent` stops during another thread calling into a long running C++ extension function, even if that function releases GIL.
 
 #### To Reproduce
 1. Clone this repo.
